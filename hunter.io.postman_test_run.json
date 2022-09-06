@@ -1,0 +1,600 @@
+{
+	"id": "20216ecf-858b-4c2d-a401-2a65cd32c8c6",
+	"name": "hunter.io",
+	"timestamp": "2022-09-03T19:38:40.908Z",
+	"collection_id": "5888023-c6bac3dd-cfe8-4044-9f87-6c7c6a5d6d4f",
+	"folder_id": 0,
+	"environment_id": "5888023-f76c96ec-8ff1-4388-8c0e-6af47ef5267c",
+	"totalPass": 112,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "2bf3c599-0694-42f5-9a97-7c01da212780",
+			"name": "TC001 - Recuperar todos leads cadastrados",
+			"time": 403,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Status code name is OK": true,
+				"Response time is less than 2s": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Status code name is OK": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Response time is less than 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				611,
+				447,
+				504,
+				403
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				}
+			]
+		},
+		{
+			"id": "ac391ec8-e9fd-44a9-8cdf-b670671e71c3",
+			"name": "TC002 - Recuperar lead específico",
+			"time": 364,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Status code name is OK": true,
+				"Response time is less than 2s": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Status code name is OK": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Response time is less than 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				406,
+				388,
+				364,
+				364
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				}
+			]
+		},
+		{
+			"id": "628b91ce-d5bc-4a42-8d64-64ee5ca7cc96",
+			"name": "TC003 - Criar novo lead",
+			"time": 503,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Successful POST request": true,
+				"Status code name is Created": true,
+				"Response time is less than 2s": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Status code name is Created": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Response time is less than 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				464,
+				534,
+				488,
+				503
+			],
+			"allTests": [
+				{
+					"Successful POST request": true,
+					"Status code name is Created": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Successful POST request": true,
+					"Status code name is Created": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Successful POST request": true,
+					"Status code name is Created": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Successful POST request": true,
+					"Status code name is Created": true,
+					"Response time is less than 2s": true
+				}
+			]
+		},
+		{
+			"id": "e0747d18-d81b-415c-996b-a2ae3b96f108",
+			"name": "TC004 - Editar lead",
+			"time": 454,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true,
+				"Status code name is No Content": true,
+				"Response time is less than 2s": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Status code name is No Content": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Response time is less than 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				487,
+				528,
+				422,
+				454
+			],
+			"allTests": [
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true,
+					"Response time is less than 2s": true
+				}
+			]
+		},
+		{
+			"id": "5ba007d8-c35b-4fe2-b461-e9b1b59b8a6f",
+			"name": "TC005 - Excluir lead",
+			"time": 367,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true,
+				"Status code name is No Content": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Status code name is No Content": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				451,
+				418,
+				473,
+				367
+			],
+			"allTests": [
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true
+				}
+			]
+		},
+		{
+			"id": "c8b4f7fa-3495-412c-874f-1340d80365a4",
+			"name": "TC006 - Recuperar todas listas de leads cadastradas",
+			"time": 337,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Status code name is OK": true,
+				"Response time is less than 2s": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Status code name is OK": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Response time is less than 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				342,
+				343,
+				341,
+				337
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				}
+			]
+		},
+		{
+			"id": "b7432ee9-e5bc-4938-8781-1cd63af8a4b8",
+			"name": "TC007 - Recuperar lista de lead específica",
+			"time": 419,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Status code name is OK": true,
+				"Response time is less than 2s": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Status code name is OK": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Response time is less than 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				420,
+				414,
+				403,
+				419
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Status code name is OK": true,
+					"Response time is less than 2s": true
+				}
+			]
+		},
+		{
+			"id": "c3017d48-80b7-428c-9154-1345435db90d",
+			"name": "TC008 - Criar nova lista de lead",
+			"time": 392,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Successful POST request": true,
+				"Status code name is Created": true,
+				"Response time is less than 2s": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Status code name is Created": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Response time is less than 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				361,
+				341,
+				353,
+				392
+			],
+			"allTests": [
+				{
+					"Successful POST request": true,
+					"Status code name is Created": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Successful POST request": true,
+					"Status code name is Created": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Successful POST request": true,
+					"Status code name is Created": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Successful POST request": true,
+					"Status code name is Created": true,
+					"Response time is less than 2s": true
+				}
+			]
+		},
+		{
+			"id": "088556f7-17eb-4f3e-83ee-e5a128e15dd7",
+			"name": "TC009 - Editar lista de lead",
+			"time": 337,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true,
+				"Status code name is No Content": true,
+				"Response time is less than 2s": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Status code name is No Content": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Response time is less than 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				373,
+				361,
+				326,
+				337
+			],
+			"allTests": [
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true,
+					"Response time is less than 2s": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true,
+					"Response time is less than 2s": true
+				}
+			]
+		},
+		{
+			"id": "3ee17fd2-3b86-4af5-960c-24537119e735",
+			"name": "TC010 - Excluir lista de lead",
+			"time": 357,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true,
+				"Status code name is No Content": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Status code name is No Content": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				387,
+				356,
+				355,
+				357
+			],
+			"allTests": [
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true
+				},
+				{
+					"Status code is 204": true,
+					"Status code name is No Content": true
+				}
+			]
+		}
+	],
+	"count": 4,
+	"totalTime": 16394,
+	"collection": {
+		"requests": [
+			{
+				"id": "2bf3c599-0694-42f5-9a97-7c01da212780",
+				"method": "GET"
+			},
+			{
+				"id": "ac391ec8-e9fd-44a9-8cdf-b670671e71c3",
+				"method": "GET"
+			},
+			{
+				"id": "628b91ce-d5bc-4a42-8d64-64ee5ca7cc96",
+				"method": "POST"
+			},
+			{
+				"id": "e0747d18-d81b-415c-996b-a2ae3b96f108",
+				"method": "PUT"
+			},
+			{
+				"id": "5ba007d8-c35b-4fe2-b461-e9b1b59b8a6f",
+				"method": "DELETE"
+			},
+			{
+				"id": "c8b4f7fa-3495-412c-874f-1340d80365a4",
+				"method": "GET"
+			},
+			{
+				"id": "b7432ee9-e5bc-4938-8781-1cd63af8a4b8",
+				"method": "GET"
+			},
+			{
+				"id": "c3017d48-80b7-428c-9154-1345435db90d",
+				"method": "POST"
+			},
+			{
+				"id": "088556f7-17eb-4f3e-83ee-e5a128e15dd7",
+				"method": "PUT"
+			},
+			{
+				"id": "3ee17fd2-3b86-4af5-960c-24537119e735",
+				"method": "DELETE"
+			}
+		]
+	}
+}
