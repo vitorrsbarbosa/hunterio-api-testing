@@ -1,0 +1,720 @@
+{
+	"info": {
+		"_postman_id": "c6bac3dd-cfe8-4044-9f87-6c7c6a5d6d4f",
+		"name": "hunter.io",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LEAD",
+			"item": [
+				{
+					"name": "Recuperar todos leads cadastrados",
+					"item": [
+						{
+							"name": "TC001 - Recuperar todos leads cadastrados",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ea3dfb7-45c0-49dd-9800-ab37660c5754",
+										"exec": [
+											"var response = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.environment.set(\"lead_id\",response.data.leads[0].id);\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "2bf3c599-0694-42f5-9a97-7c01da212780",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/leads?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "6eb31237-d8d0-46b9-9753-bfb8c33f3fb8",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Recuperar lead específico",
+					"item": [
+						{
+							"name": "TC002 - Recuperar lead específico",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "43bd842f-d036-4620-9648-716bb28afcd8",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "ac391ec8-e9fd-44a9-8cdf-b670671e71c3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/leads/{{lead_id}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads",
+										"{{lead_id}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "b86d4504-4b1b-46cd-9991-beabd55d35d2",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Criar novo lead",
+					"item": [
+						{
+							"name": "TC003 - Criar novo lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "85a3d773-9697-4703-b3e7-5b9c79d4e5e7",
+										"exec": [
+											"var response = JSON.parse(responseBody);\r",
+											"var createdLead = response.data;\r",
+											"\r",
+											"pm.environment.set(\"lead_id_edit\",createdLead.id);\r",
+											"pm.environment.set(\"lead_email_edit\",createdLead.email);\r",
+											"pm.environment.set(\"lead_first_name_edit\",createdLead.first_name);\r",
+											"pm.environment.set(\"lead_last_name_edit\",createdLead.last_name);\r",
+											"pm.environment.set(\"lead_position_edit\",createdLead.position);\r",
+											"pm.environment.set(\"lead_company_edit\",createdLead.company)\r",
+											"pm.environment.set(\"lead_company_industry_edit\",createdLead.company_industry);\r",
+											"pm.environment.set(\"list_id_edit\",createdLead.leads_list.id);\r",
+											"pm.environment.set(\"list_name_edit\",createdLead.leads_list.name);\r",
+											"\r",
+											"\r",
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is Created\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fc1cf6ef-5919-4fea-abca-846589feec03",
+										"exec": [
+											"pm.iterationData.get(\"lead_email\");\r",
+											"pm.iterationData.get(\"lead_first_name\");\r",
+											"pm.iterationData.get(\"lead_last_name\");\r",
+											"pm.iterationData.get(\"lead_position\");\r",
+											"pm.iterationData.get(\"lead_company\");\r",
+											"pm.iterationData.get(\"lead_company_industry\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "628b91ce-d5bc-4a42-8d64-64ee5ca7cc96",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"{{lead_email}}\",\r\n  \"first_name\": \"{{lead_first_name}}\",\r\n  \"last_name\": \"{{lead_last_name}}\",\r\n  \"position\": \"{{lead_position}}\",\r\n  \"company\": \"{{lead_company}}\",\r\n  \"company_industry\":\"{{lead_company_industry}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "ed0401a3-ca4e-45d8-b969-ae4844a852a5",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Editar lead",
+					"item": [
+						{
+							"name": "TC004 - Editar lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "85a3d773-9697-4703-b3e7-5b9c79d4e5e7",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is No Content\", function () {\r",
+											"    pm.response.to.have.status(\"No Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 3s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "5d4f7a19-d7c0-4b24-9ccd-9073ab616c05",
+										"exec": [
+											"pm.iterationData.get(\"lead_email_edit\");\r",
+											"pm.iterationData.get(\"lead_first_name_edit\");\r",
+											"pm.iterationData.get(\"lead_last_name_edit\");\r",
+											"pm.iterationData.get(\"lead_position_edit\");\r",
+											"pm.iterationData.get(\"lead_company_edit\");\r",
+											"pm.iterationData.get(\"lead_company_industry_edit\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "e0747d18-d81b-415c-996b-a2ae3b96f108",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"{{lead_email_edit}}\",\r\n  \"first_name\": \"{{lead_first_name_edit}}\",\r\n  \"last_name\": \"{{last_name_edit}}\",\r\n  \"position\": \"{{lead_position_edit}}\",\r\n  \"company\": \"{{lead_company_edit}}\",\r\n  \"company_industry\":\"{{lead_company_industry_edit}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads/{{lead_id_edit}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads",
+										"{{lead_id_edit}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "1f39459b-6593-448e-a576-8d3f4b7cb4c5",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Excluir lead",
+					"item": [
+						{
+							"name": "TC005 - Excluir lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "85a3d773-9697-4703-b3e7-5b9c79d4e5e7",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is No Content\", function () {\r",
+											"    pm.response.to.have.status(\"No Content\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "5ba007d8-c35b-4fe2-b461-e9b1b59b8a6f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads/{{lead_id_edit}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads",
+										"{{lead_id_edit}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "d45cfa0a-b78c-42c0-ae81-c7fcffe95c00",
+					"_postman_isSubFolder": true
+				}
+			],
+			"_postman_id": "1b9c9c49-ac7c-469a-85a7-a442c76e1112"
+		},
+		{
+			"name": "LEADS list",
+			"item": [
+				{
+					"name": "Recuperar todos leads list cadastrados",
+					"item": [
+						{
+							"name": "TC006 - Recuperar todas listas de leads cadastradas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "29fc0072-838c-41b8-9f93-32aca980cb51",
+										"exec": [
+											"var response = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.environment.set(\"list_id\",response.data.leads_lists[0].id);\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "c8b4f7fa-3495-412c-874f-1340d80365a4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/leads_lists?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads_lists"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "ae9653c6-a2bf-4866-b40b-19bc4baf2824",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Recuperar leads list específico",
+					"item": [
+						{
+							"name": "TC007 - Recuperar lista de lead específica",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "29fc0072-838c-41b8-9f93-32aca980cb51",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "b7432ee9-e5bc-4938-8781-1cd63af8a4b8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/leads_lists/{{list_id}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads_lists",
+										"{{list_id}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "fd59af40-1350-414b-a326-61f472c442e2",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Criar novo leads list",
+					"item": [
+						{
+							"name": "TC008 - Criar nova lista de lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "29fc0072-838c-41b8-9f93-32aca980cb51",
+										"exec": [
+											"var response = JSON.parse(responseBody);\r",
+											"var createdList = response.data;\r",
+											"\r",
+											"pm.environment.set(\"list_id_edit\",createdList.id);\r",
+											"pm.environment.set(\"list_name_edit\",createdList.name)\r",
+											"\r",
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is Created\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "c3017d48-80b7-428c-9154-1345435db90d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"{{$randomWords}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads_lists?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads_lists"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "ba21403c-34ef-4131-b808-59f2eaf3a29f",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Editar leads list",
+					"item": [
+						{
+							"name": "TC009 - Editar lista de lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "85a3d773-9697-4703-b3e7-5b9c79d4e5e7",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is No Content\", function () {\r",
+											"    pm.response.to.have.status(\"No Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "088556f7-17eb-4f3e-83ee-e5a128e15dd7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"company\": \"{{$randomWords}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads_lists/{{list_id_edit}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads_lists",
+										"{{list_id_edit}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "788f6bdd-1a7b-46f6-aa5e-228486a27a7e",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Excluir leads list",
+					"item": [
+						{
+							"name": "TC010 - Excluir lista de lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "85a3d773-9697-4703-b3e7-5b9c79d4e5e7",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is No Content\", function () {\r",
+											"    pm.response.to.have.status(\"No Content\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "3ee17fd2-3b86-4af5-960c-24537119e735",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads_lists/{{list_id_edit}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads_lists",
+										"{{list_id_edit}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "4152116f-14af-456f-b1b4-6741f3142908",
+					"_postman_isSubFolder": true
+				}
+			],
+			"_postman_id": "a1c10ac0-9be6-4af3-b5ff-446db12976e2"
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": {
+			"key": "api_key",
+			"value": "{{API_KEY}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "29e20ae1-571b-433f-b713-21f06620f6f7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "36774f95-081a-4dbe-8768-fce99bb71536",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
