@@ -1,0 +1,653 @@
+{
+	"info": {
+		"_postman_id": "c6bac3dd-cfe8-4044-9f87-6c7c6a5d6d4f",
+		"name": "hunter.io",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5888023"
+	},
+	"item": [
+		{
+			"name": "LEAD",
+			"item": [
+				{
+					"name": "Recuperar todos leads cadastrados",
+					"item": [
+						{
+							"name": "TC001 - Recuperar todos leads cadastrados",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.environment.set(\"lead_id\",response.data.leads[0].id);\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/leads?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Recuperar lead específico",
+					"item": [
+						{
+							"name": "TC002 - Recuperar lead específico",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/leads/{{lead_id}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads",
+										"{{lead_id}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Criar novo lead",
+					"item": [
+						{
+							"name": "TC003 - Criar novo lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = JSON.parse(responseBody);\r",
+											"var createdLead = response.data;\r",
+											"\r",
+											"pm.environment.set(\"lead_id_edit\",createdLead.id);\r",
+											"pm.environment.set(\"lead_email_edit\",createdLead.email);\r",
+											"pm.environment.set(\"lead_first_name_edit\",createdLead.first_name);\r",
+											"pm.environment.set(\"lead_last_name_edit\",createdLead.last_name);\r",
+											"pm.environment.set(\"lead_position_edit\",createdLead.position);\r",
+											"pm.environment.set(\"lead_company_edit\",createdLead.company)\r",
+											"pm.environment.set(\"lead_company_industry_edit\",createdLead.company_industry);\r",
+											"pm.environment.set(\"list_id_edit\",createdLead.leads_list.id);\r",
+											"pm.environment.set(\"list_name_edit\",createdLead.leads_list.name);\r",
+											"\r",
+											"\r",
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is Created\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.iterationData.get(\"email_lead\");\r",
+											"pm.iterationData.get(\"first_name\");\r",
+											"pm.iterationData.get(\"last_name\");\r",
+											"pm.iterationData.get(\"position\");\r",
+											"pm.iterationData.get(\"company\");\r",
+											"pm.iterationData.get(\"company_industry\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"{{lead_email}}\",\r\n  \"first_name\": \"{{lead_first_name}}\",\r\n  \"last_name\": \"{{lead_last_name}}\",\r\n  \"position\": \"{{lead_position}}\",\r\n  \"company\": \"{{lead_company}}\",\r\n  \"company_industry\":\"{{lead_company_industry}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Editar lead",
+					"item": [
+						{
+							"name": "TC004 - Editar lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is No Content\", function () {\r",
+											"    pm.response.to.have.status(\"No Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.iterationData.get(\"email_lead_edit\");\r",
+											"pm.iterationData.get(\"first_name_edit\");\r",
+											"pm.iterationData.get(\"last_name_edit\");\r",
+											"pm.iterationData.get(\"position_edit\");\r",
+											"pm.iterationData.get(\"company_edit\");\r",
+											"pm.iterationData.get(\"company_industry_edit\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"{{lead_email_edit}}\",\r\n  \"first_name\": \"{{lead_first_name_edit}}\",\r\n  \"last_name\": \"{{last_name_edit}}\",\r\n  \"position\": \"{{lead_position_edit}}\",\r\n  \"company\": \"{{lead_company_edit}}\",\r\n  \"company_industry\":\"{{lead_company_industry_edit}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads/{{lead_id_edit}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads",
+										"{{lead_id_edit}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Excluir lead",
+					"item": [
+						{
+							"name": "TC005 - Excluir lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is No Content\", function () {\r",
+											"    pm.response.to.have.status(\"No Content\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads/{{lead_id_edit}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads",
+										"{{lead_id_edit}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "LEADS list",
+			"item": [
+				{
+					"name": "Recuperar todos leads list cadastrados",
+					"item": [
+						{
+							"name": "TC006 - Recuperar todas listas de leads cadastradas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.environment.set(\"list_id\",response.data.leads_lists[0].id);\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/leads_lists?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads_lists"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Recuperar leads list específico",
+					"item": [
+						{
+							"name": "TC007 - Recuperar lista de lead específica",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/leads_lists/{{list_id}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads_lists",
+										"{{list_id}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Criar novo leads list",
+					"item": [
+						{
+							"name": "TC008 - Criar nova lista de lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = JSON.parse(responseBody);\r",
+											"var createdList = response.data;\r",
+											"\r",
+											"pm.environment.set(\"list_id_edit\",createdList.id);\r",
+											"pm.environment.set(\"list_name_edit\",createdList.name)\r",
+											"\r",
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is Created\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"{{$randomWords}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads_lists?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads_lists"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Editar leads list",
+					"item": [
+						{
+							"name": "TC009 - Editar lista de lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is No Content\", function () {\r",
+											"    pm.response.to.have.status(\"No Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 2s\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"company\": \"{{$randomWords}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads_lists/{{list_id_edit}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads_lists",
+										"{{list_id_edit}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Excluir leads list",
+					"item": [
+						{
+							"name": "TC010 - Excluir lista de lead",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name is No Content\", function () {\r",
+											"    pm.response.to.have.status(\"No Content\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/leads_lists/{{list_id_edit}}?api_key={{API_KEY}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"leads_lists",
+										"{{list_id_edit}}"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{API_KEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "api_key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{API_KEY}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
